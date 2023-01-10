@@ -1,5 +1,5 @@
 # LeetCode-Repo
-All of my accepted LeetCode submissions, including some documentations and complexity analyses.
+All of my accepted LeetCode submissions (including some documentations and complexity analyses) are synced to this repository.
 
 # Language of Choice
 C++ and Python.
