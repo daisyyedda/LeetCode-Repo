@@ -5,4 +5,4 @@ All of my accepted LeetCode submissions, including some documentations and compl
 C++ and Python.
 
 # Contact
-Feel free to email me at c42ye@uwaterloo should you find any mistakes/areas of improvement in my solutions.
+Feel free to email me at daisyyedda@gmail.com should you find any mistakes/areas of improvement in my solutions.
