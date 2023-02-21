@@ -1,5 +1,5 @@
 /* 
-Use two pointers to keep track of the elements and the indices respectively.
+Use two pointers to keep track of the elements and the indices in the new array respectively.
 Runtime: O(n)
 */
 class Solution {
