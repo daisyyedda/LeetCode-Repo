@@ -1,3 +1,7 @@
+/* 
+Use two pointers to keep track of the elements and the indices respectively.
+Runtime: O(n)
+*/
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
