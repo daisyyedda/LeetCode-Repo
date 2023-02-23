@@ -19,11 +19,12 @@ public:
         while (n-- && fast != nullptr) {
             fast = fast->next;
         }
+        // when fast->next == nullptr, slow is the (n+1)th node from the end
         while (fast->next != nullptr) {
             fast = fast->next;
             slow = slow->next;
         }
-        // slow->next is the node to be deleted
+        // slow->next is n-th node from the end
         ListNode* tmp = slow->next;
         slow->next = tmp->next;
         delete tmp;
