@@ -1,47 +1,44 @@
-class MyQueue {
+class MyStack {
 public:
-    stack<int> stIn;
-    stack<int> stOut;
-    /** Initialize your data structure here. */
-    MyQueue() {
-
+    queue<int> queue1;
+    queue<int> queue2;
+   
+    MyStack() {
+        
     }
-    /** Push element x to the back of queue. */
+    
     void push(int x) {
-        stIn.push(x);
+        queue1.push(x);
     }
-
-    /** Removes the element from in front of queue and returns that element. */
+    
     int pop() {
-        if (stOut.empty()) {
-            while(!stIn.empty()) {
-                stOut.push(stIn.top());
-                stIn.pop();
-            }
+        int res = queue1.front();
+        queue1.pop();
+        while (!queue1.empty()) {
+            queue2.push(res);
+            res = queue1.front();
+            queue1.pop();    
         }
-        int result = stOut.top();
-        stOut.pop();
-        return result;
-    }
-
-    /** Get the front element. */
-    int peek() {
-        int res = this->pop(); 
-        stOut.push(res); 
+        queue1 = queue2;
+        while (!queue2.empty()) queue2.pop();
         return res;
     }
-
-    /** Returns whether the queue is empty. */
+    
+    int top() {
+        return queue1.back();
+    }
+    
     bool empty() {
-        return stIn.empty() && stOut.empty();
+        if (!queue1.empty()) cout << queue1.front();
+        return queue1.empty();
     }
 };
 
 /**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue* obj = new MyQueue();
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
  * obj->push(x);
  * int param_2 = obj->pop();
- * int param_3 = obj->peek();
+ * int param_3 = obj->top();
  * bool param_4 = obj->empty();
  */
