@@ -1,51 +1,44 @@
-class MyStack {
+class MyQueue {
 public:
-    queue<int> stIn;
-    queue<int> stOut;
+    stack<int> stackIn;
+    stack<int> stackOut;
 
-    // initialize an empty stack
-    MyStack() {
+    MyQueue() {
         
     }
     
-    // push to the top of the stack
     void push(int x) {
-        stIn.push(x);
+        stackIn.push(x);   
     }
     
-    // remove and return the element on top of stack
     int pop() {
-        int size = stIn.size();
-        size--;
-        while (size--) { 
-            stOut.push(stIn.front());
-            stIn.pop();
+        if (stackOut.empty()) {
+            while (!stackIn.empty()) {
+                stackOut.push(stackIn.top());
+                stackIn.pop();
+            }
         }
-        int result = stIn.front(); 
-        stIn.pop();
-        stIn = stOut;           
-        while (!stOut.empty()) {
-            stOut.pop();
-        }
-        return result;   
+        int res = stackOut.top();
+        stackOut.pop();
+        return res;       
     }
     
-    // return the element on top of the stack
-    int top() {
-        return stIn.back();
+    int peek() {
+        int res = this->pop();
+        stackOut.push(res);
+        return res; 
     }
     
-    // check whether the stack is empty
     bool empty() {
-        return stIn.empty();
+        return stackIn.empty() && stackOut.empty();
     }
 };
 
 /**
- * Your MyStack object will be instantiated and called as such:
- * MyStack* obj = new MyStack();
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
  * obj->push(x);
  * int param_2 = obj->pop();
- * int param_3 = obj->top();
+ * int param_3 = obj->peek();
  * bool param_4 = obj->empty();
  */
