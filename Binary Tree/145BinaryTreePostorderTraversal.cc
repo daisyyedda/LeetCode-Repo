@@ -11,19 +11,18 @@
  */
 class Solution {
 public:
-    void traverse(TreeNode *root, vector<int>& res) {
+    void traverse(TreeNode* root, vector<int>& res) {
         if (root == nullptr) {
             return;
         } else {
-            res.emplace_back(root->val);
             traverse(root->left, res);
             traverse(root->right, res);
+            res.emplace_back(root->val);
         }
     }
-    
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> postorderTraversal(TreeNode* root) {
         vector<int> res;
         traverse(root, res);
-        return res;   
+        return res;
     }
 };
