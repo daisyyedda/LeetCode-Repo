@@ -15,6 +15,7 @@ void backtracking(int n, int row, vector<string>& chessboard) {
         }
     }
 }
+
 bool isValid(int row, int col, vector<string>& chessboard, int n) {
     for (int i = 0; i < row; i++) { 
         if (chessboard[i][col] == 'Q') {
