@@ -1,21 +1,21 @@
 class Solution {
 public:
+    // runtime: O(2^n) since recursion tree has 2^n nodes
     vector<string> generateParenthesis(int n) {
-        vector<string> result;
-        generate(n, 0, 0, "", result);
-        return result;
+        vector<string> res;
+        generate(0, 0, n, "", res);
+        return res;
     }
 private:
-    void generate(int n, int open, int close, string str, vector<string>& result) {
+    void generate(int open, int close, int n, string s, vector<string> &res) {
         if (open == n && close == n) {
-            result.emplace_back(str);
-            return;
+            res.emplace_back(s);
         }
         if (open < n) {
-            generate(n, open + 1, close, str + '(', result);
+            generate(open+1, close, n, s+"(", res);
         }
-        if (open > close) {
-            generate(n, open, close + 1, str + ')', result);
+        if (close < open) {
+            generate(open, close+1, n, s+")", res);
         }
     }
 };

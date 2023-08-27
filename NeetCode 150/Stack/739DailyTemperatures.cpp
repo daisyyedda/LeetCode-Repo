@@ -1,26 +1,22 @@
 class Solution {
 public:
+    // runtime: O(n), space: O(n)
     vector<int> dailyTemperatures(vector<int>& temperatures) {
         int n = temperatures.size();
-
-        stack<pair<int, int>> stk;
-        vector<int> result(n);
-
+        vector<int> res(n);
+        stack<pair<int, int>> st;
+        int currDay, currTemp, prevDay;
         for (int i = 0; i < n; i++) {
-            int currDay = i;
-            int currTemp = temperatures[i];
-
-            while (!stk.empty() && stk.top().second < currTemp) {
-                int prevDay = stk.top().first;
-                int prevTemp = stk.top().second;
-                stk.pop();
-
-                result[prevDay] = currDay - prevDay;
+            currDay = i;
+            currTemp = temperatures[i];
+            // currDay has a warmer temperature than prevDay, update res for prevDay
+            while (!st.empty() && st.top().second < currTemp) {
+                prevDay = st.top().first;
+                res[prevDay] = currDay - prevDay;
+                st.pop();
             }
-
-            stk.push({currDay, currTemp});
+            st.push({currDay, currTemp});
         }
-
-        return result;
+        return res;
     }
 };
